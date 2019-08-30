@@ -1,0 +1,62 @@
+第四章 SCALA面向对象
+
+1、面向对象概述
+    封装：属性、方法封装到类中
+        Person：
+            int id, String name, Date birthday...
+            eat、sleep...
+    继承：父类和子类之间的关系
+        User extends Person
+            exam......
+    多态：*****
+        父类引用指向子类对象  精髓所在  开发框架的基石
+        Person person = new Person();
+        User user = new User();
+        Person person = new User();
+
+
+
+
+2、类的定义与使用
+var name:String = _  // _为占位符
+
+3、构造器
+主构造器和附属构造器
+    // 主构造器
+    class Person (val name:String, val age:Int) {
+      println("Person Constructor enter....")
+
+      val school = "ustc"
+      var gender:String = _
+
+      // 附属构造器
+      def this(name:String, age:Int, gender:String){
+        this(name, age) // 附属构造器的第一行代码必须要调用主构造器或者其他附属构造器
+        this.gender = gender
+      }
+
+      println("Person Constructor leave....")
+    }
+
+
+
+4、继承与重写
+
+
+
+5、抽象类
+
+
+6、伴生类和伴生对象
+
+
+7、apply
+
+
+8、case class
+// case class不用new
+// 通常用在模式匹配
+
+9、trait 类似于接口
+多个trait使用
+xxx extends atrait with btrait

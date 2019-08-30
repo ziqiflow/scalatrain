@@ -1,0 +1,63 @@
+第八章 Scala隐式转换
+
+
+隐式转换概述
+
+    需求：为一个已存在的类添加一个新的方法
+    Java：动态代理
+    Scala：隐式转换
+    双刃剑
+
+    Spark/Hive/MR.... 调优
+
+
+
+
+
+隐式转换实战
+
+
+    //  implicit def man2superman(man:Man):Superman = new Superman(man.name)
+    //  import ImplicitAspect.man2superman
+    //  val man = new Man("PK")
+    //  man.fly()
+
+    class Man(val name:String) {
+
+      def eat(): Unit ={
+        println(s"superman[ $name ] eat ....." )
+      }
+
+    }
+
+    class Superman(val name:String) {
+
+      def fly(): Unit ={
+          println(s"superman[ $name ] fly ....." )
+      }
+
+    }
+
+
+隐式参数
+
+    implicit val test = "test"
+
+    def testParam(implicit name:String): Unit ={
+      println(name + "~~~~~~~~~~~~")
+    }
+
+    testParam
+
+
+隐式类
+
+    object ImplicitClassApp extends App{
+
+      implicit class Calculator(x:Int) {
+        def add(a:Int) = a + x
+      }
+
+      println(1.add(3))
+
+    }

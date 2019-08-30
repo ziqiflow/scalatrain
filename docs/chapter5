@@ -1,0 +1,39 @@
+第五章 SCALA集合
+
+数组
+    定长数组
+        val a = new Array[String](5)
+        val b = Array("hadoop", "spark", "storm")
+    变长数组
+        val c = scala.collection.mutable.ArrayBuffer[Int]()
+
+List
+    val l = List(1,2,3,4,5)
+    l.head  //头，第一个元素
+    l.tail  //第二个之后的元素
+    --> val l2 = 1 :: Nil     相当于head :: tail
+
+    // :_* 可以将sql[Int]转换成可变参数
+    def sum(nums:Int*):Int = {
+        if(nums.length == 0){
+          0
+        }else{
+          nums.head + sum(nums.tail:_*)
+        }
+      }
+
+Set
+    val set = scala.collection.mutable.Set[Int]()
+
+Map
+    定长：val a = Map("PK" -> 18, "zhangsan" -> 30)
+    变长：val b = mutable.Map("PK" -> 18, "zhangsan" -> 30)
+    val c = mutable.HashMap[String, Int]()
+
+
+Option&Some&None
+
+
+
+
+Tuple 元组

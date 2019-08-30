@@ -1,0 +1,46 @@
+第九章 Scala操作外部数据
+
+操作文件
+    var file = Source.fromFile("D:\\test.txt")(scala.io.Codec.ISO8859)
+    file.getLines()
+
+    var file = Source.fromURL("http://www.baidu.com")
+
+
+操作XML
+
+    读取：
+    val xml = XML.load(this.getClass.getClassLoader.getResource("test.xml"))
+    val xml = XML.load(new FileInputStream("D:\\Scala\\workspace\\scalatrain\\src\\main\\resources\\test.xml"))
+    val xml = XML.load(
+            new InputStreamReader(
+              new FileInputStream("D:\\Scala\\workspace\\scalatrain\\src\\main\\resources\\test.xml")))
+
+    解析：
+
+    // header/field
+    val headerField = xml \ "header" \ "field"
+
+    // all/field
+    val fields = xml \\ "field"
+
+    // header/field/name
+    val fieldAttributes = (xml \ "header" \ "field").map(_ \ "@name")
+    val fieldAttributes = (xml \ "header" \ "field" \\ "@name")
+
+
+    //  name="Logon" message
+    val filters = (xml \\ "message")
+//        .filter(_.attribute("name").exists(_.text.equals("Logon")))
+        .filter(x => ((x \ "@name").text).equals("ResendRequest"))
+
+    // header/field content
+        (xml \ "header" \ "field")
+          .map(x => (x \ "@name", x.text, x \ "@required"))
+          .foreach(println)
+
+
+操作MySQL
+
+    基本跟java的jdbc一样
+

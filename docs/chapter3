@@ -1,0 +1,54 @@
+第三章 SCALA函数
+
+1、方法的定义和使用
+
+def 方法名 （参数名 ： 参数类型）：返回值类型 = {
+
+    // 括号内的叫方法体
+
+    //方法体内的最后一行为返回值，不需要使用return
+}
+
+
+2、默认参数的使用
+
+在函数定义时，允许指定参数的默认值
+
+    $SPARK_HOME/conf/spark-dafault.conf
+
+
+3、命名参数的使用
+
+      println(speed(100, 10))
+      println(speed(distance = 100, time = 10))
+      println(speed(time = 10, distance = 100))
+
+      def speed(distance:Float, time:Float):Float = {
+        distance/time
+      }
+
+
+4、可变参数的使用
+      JDK5+ : 可变参数
+      def sum2(numbers:Int*): Int ={
+        var result = 0
+        for(number <- numbers) {
+          result += number
+        }
+        result
+      }
+
+
+5、条件表达式
+    if(x>0) true else false
+
+6、循环表达式
+    to
+         1 to 10
+         1.to(10)
+    Range
+         Range(1,10)
+         Range(1,10,2)
+    until
+        1 unitl 10
+        1.until(10)
